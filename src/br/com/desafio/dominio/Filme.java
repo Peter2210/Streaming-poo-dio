@@ -7,6 +7,15 @@ import java.util.Set;
 
 public class Filme extends Conteudo{
 
+    public Filme() {
+    }
+
+    public Filme(BigDecimal duracao, Set<Ator_Atriz> atores_Atrizes, Set<Diretor_a> diretor_as) {
+        this.duracao = duracao;
+        this.atores_Atrizes = atores_Atrizes;
+        this.diretor_as = diretor_as;
+    }
+
     private BigDecimal duracao;
 
     private Set<Ator_Atriz> atores_Atrizes = new LinkedHashSet<>();

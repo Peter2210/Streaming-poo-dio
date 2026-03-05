@@ -6,6 +6,16 @@ import java.util.Set;
 
 public class Serie extends Conteudo{
 
+    public Serie() {
+    }
+
+    public Serie(int numEpisodios, Set<Episodio> episodios, Set<Ator_Atriz> elencoPrincipal, Set<Diretor_a> diretoresPrincipais) {
+        this.numEpisodios = numEpisodios;
+        this.episodios = episodios;
+        this.elencoPrincipal = elencoPrincipal;
+        this.diretoresPrincipais = diretoresPrincipais;
+    }
+
     private int numEpisodios;
 
     private Set<Episodio> episodios = new LinkedHashSet<>();

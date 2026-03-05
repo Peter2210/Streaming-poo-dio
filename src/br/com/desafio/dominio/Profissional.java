@@ -5,6 +5,19 @@ import java.util.Set;
 
 public abstract class Profissional {
 
+    public Profissional() {
+    }
+
+    public Profissional(long id, String nome, int idade, String descricao, Set<Filme> historicoFilme,
+            Set<Serie> historicoSerie) {
+        this.id = id;
+        this.nome = nome;
+        this.idade = idade;
+        this.descricao = descricao;
+        this.historicoFilme = historicoFilme;
+        this.historicoSerie = historicoSerie;
+    }
+
     private long id;
 
     private String nome;

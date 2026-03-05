@@ -5,6 +5,15 @@ import java.util.Set;
 
 public class Episodio extends Conteudo{
 
+    public Episodio() {
+    }
+    
+    public Episodio(int numEpisodio, Set<Ator_Atriz> elenco, Set<Diretor_a> diretores) {
+        this.numEpisodio = numEpisodio;
+        this.elenco = elenco;
+        this.diretores = diretores;
+    }
+
     private int numEpisodio;
 
     private Set<Ator_Atriz> elenco = new HashSet<>();
