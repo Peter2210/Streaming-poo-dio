@@ -42,6 +42,3 @@ Principais classes:
 A duração dos filmes é representada com `java.time.Duration`.
 
 ---
-
-## Exemplo de saída
-
