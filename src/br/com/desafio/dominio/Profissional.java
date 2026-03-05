@@ -18,7 +18,9 @@ public abstract class Profissional {
         this.historicoSerie = historicoSerie;
     }
 
-    private long id;
+    private static long SEQUENCIA = 1;
+
+    private long id = SEQUENCIA++;
 
     private String nome;
 
@@ -30,7 +32,7 @@ public abstract class Profissional {
 
     private Set<Serie> historicoSerie = new LinkedHashSet<>();
 
-    public double getId() {
+    public long getId() {
         return id;
     }
 
@@ -76,6 +78,26 @@ public abstract class Profissional {
 
     public void adicionarHistoricoSerie(Serie serie) {
         this.historicoSerie.add(serie);
+    }
+
+    public int quantidadeFilmes() {
+        return historicoFilme.size();
+    }
+
+    public int quantidadeSeries() {
+        return historicoSerie.size();
+    }
+
+    public void listarFilmes() {
+        historicoFilme.forEach(f -> 
+            System.out.println(f.getNome())
+        );
+    }
+
+    public void listarSeries() {
+        historicoSerie.forEach(f -> 
+            System.out.println(f.getNome())
+        );
     }
 
     @Override

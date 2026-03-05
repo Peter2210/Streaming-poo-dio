@@ -1,6 +1,6 @@
 package br.com.desafio.dominio;
 
-import java.math.BigDecimal;
+import java.time.Duration;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -10,23 +10,23 @@ public class Filme extends Conteudo{
     public Filme() {
     }
 
-    public Filme(BigDecimal duracao, Set<Ator_Atriz> atores_Atrizes, Set<Diretor_a> diretor_as) {
+    public Filme(Duration duracao, Set<Ator_Atriz> atores_Atrizes, Set<Diretor_a> diretor_as) {
         this.duracao = duracao;
         this.atores_Atrizes = atores_Atrizes;
         this.diretor_as = diretor_as;
     }
 
-    private BigDecimal duracao;
+    private Duration duracao;
 
     private Set<Ator_Atriz> atores_Atrizes = new LinkedHashSet<>();
 
     private Set<Diretor_a> diretor_as = new HashSet<>();
 
-    public BigDecimal getDuracao() {
+    public Duration getDuracao() {
         return duracao;
     }
 
-    public void setDuracao(BigDecimal duracao) {
+    public void setDuracao(Duration duracao) {
         this.duracao = duracao;
     }
 
@@ -48,13 +48,21 @@ public class Filme extends Conteudo{
 
     @Override
     public void iniciar() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'iniciar'");
+        if(isReproduzindo()){
+            System.out.printf("Filme já em reprodução");
+        }else{
+            setReproduzindo(true);
+            System.out.println("Iniciando filme " + this.getNome());
+        }
     }
 
     @Override
     public void pausar() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'pausar'");
+        if(!isReproduzindo()){
+            System.out.printf("Filme já está pausado");
+        }else{
+            setReproduzindo(false);
+            System.out.println("Pausando filme " + this.getNome());
+        }
     }
 }

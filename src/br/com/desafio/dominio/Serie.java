@@ -2,6 +2,7 @@ package br.com.desafio.dominio;
 
 import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.Scanner;
 import java.util.Set;
 
 public class Serie extends Conteudo{
@@ -56,17 +57,50 @@ public class Serie extends Conteudo{
         this.diretoresPrincipais = diretoresPrincipais;
     }
 
+    public void iniciarEpisodio(int numeroEpisodio) {
+        episodios.stream()
+            .filter(ep -> ep.getNumEpisodio() == numeroEpisodio)
+            .findFirst()
+            .ifPresentOrElse(
+                Episodio::iniciar,
+                () -> System.out.println("Episódio não encontrado")
+            );
+    }
+
+    public void pausarEpisodio(int numeroEpisodio) {
+        episodios.stream()
+            .filter(ep -> ep.getNumEpisodio() == numeroEpisodio)
+            .findFirst()
+            .ifPresentOrElse(
+                Episodio::pausar,
+                () -> System.out.println("Episódio não encontrado")
+            );
+    }
+
     @Override
     public void iniciar() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'iniciar'");
+        System.out.println("Escolha episódio a ser reproduzido:\n");
+        episodios.forEach(
+            ep -> System.out.printf("Episodio %i - %s \n", ep.getNumEpisodio(), ep.getNome())
+        );
+        System.out.println("Episódio: ");
+        Scanner scanner = new Scanner(System.in);
+        int epEscolha = scanner.nextInt();
+        iniciarEpisodio(epEscolha);
+        scanner.close();
     }
 
     @Override
     public void pausar() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'pausar'");
+        System.out.println("Escolha episódio a ser pausado:\n");
+        episodios.forEach(
+            ep -> System.out.printf("Episodio %i - %s", ep.getNumEpisodio(), ep.getNome())
+        );
+        System.out.println("Episódio: ");
+        Scanner scanner = new Scanner(System.in);
+        int epEscolha = scanner.nextInt();
+        iniciarEpisodio(epEscolha);
+        pausarEpisodio(epEscolha);
+        scanner.close();
     }
-
-    
 }

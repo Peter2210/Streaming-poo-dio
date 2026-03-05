@@ -4,7 +4,9 @@ import java.time.LocalDate;
 
 public abstract class Conteudo {
 
-    private long id;
+    private static long SEQUENCIA = 1;
+
+    private long id = SEQUENCIA++;
 
     private String nome;
 
@@ -13,6 +15,8 @@ public abstract class Conteudo {
     private String descricao;
 
     private int idadeMediaRecomendada;
+
+    private boolean reproduzindo = false;
 
     public long getId() {
         return id;
@@ -52,6 +56,14 @@ public abstract class Conteudo {
 
     public void setIdadeMediaRecomendada(int idadeMediaRecomendada) {
         this.idadeMediaRecomendada = idadeMediaRecomendada;
+    }
+
+        public boolean isReproduzindo() {
+        return reproduzindo;
+    }
+
+    public void setReproduzindo(boolean reproduzindo) {
+        this.reproduzindo = reproduzindo;
     }
 
     @Override

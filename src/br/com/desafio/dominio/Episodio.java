@@ -46,13 +46,21 @@ public class Episodio extends Conteudo{
 
     @Override
     public void iniciar() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'iniciar'");
+        if(isReproduzindo()){
+            System.out.printf("Episodio já em reprodução");
+        }else{
+            setReproduzindo(true);
+            System.out.println("Iniciando episódio " + numEpisodio + " - " + this.getNome());
+        }
     }
 
     @Override
     public void pausar() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'pausar'");
+        if(!isReproduzindo()){
+            System.out.printf("Episodio já está pausado");
+        }else{
+            setReproduzindo(false);
+            System.out.println("Pausando episódio " + numEpisodio + " - " + this.getNome());
+        }
     }
 }
